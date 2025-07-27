@@ -61,8 +61,8 @@ export default function App() {
             <th>Round</th>
             {players.map(player => (
               <th key={player}>
-                {player}
-                <button onClick={() => removePlayer(player)} style={{ marginLeft: '5px' }}>❌</button>
+                <button onClick={() => removePlayer(player)} className="btn btn-outline btn-error btn-block">❌</button>
+                <div className="text-center">{player}</div>
               </th>
             ))}
           </tr>
