@@ -15,18 +15,20 @@ function AddPlayerForm({ onAdd }) {
   return (
     <form onSubmit={handleSubmit} style={{ marginBottom: "1em" }}>
       <input
+	className="input"
         type="text"
         placeholder="Enter player name"
         value={name}
         onChange={(e) => setName(e.target.value)}
         required
       />
-      <button type="submit">Add Player</button>
+      <button type="submit" className="btn btn-xl btn-primary">Add Player</button>
     </form>
   );
 }
 
 export default function App() {
+  const roundName = [ "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
   const [players, setPlayers] = useState([]);
   const [scores, setScores] = useState({});
 
@@ -50,9 +52,10 @@ export default function App() {
 
   return (
     <div>
-      <h1>Score Tracker</h1>
+      <h1>5 👑</h1>
       <AddPlayerForm onAdd={addPlayer} />
-      <table>
+      <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+      <table className="table">
         <thead>
           <tr>
             <th>Round</th>
@@ -67,14 +70,25 @@ export default function App() {
         <tbody>
           {Array.from({ length: 11 }, (_, roundIndex) => (
             <tr key={roundIndex}>
-              <td>Round {roundIndex + 1}</td>
+              <td>Round {roundName[roundIndex]}</td>
               {players.map(player => (
                 <td key={player}>
-                  <input
-                    type="number"
-                    value={scores[player]?.[roundIndex] || 0}
-                    onChange={(e) => updateScore(player, roundIndex, e.target.value)}
-                  />
+<input
+  type="number"
+  className="input input-accent input-lg"
+  onBlur={(e) => updateScore(player, roundIndex, e.target.value)}
+  onKeyDown ={(e)=> {
+if(e.key === "Enter"){
+e.target.blur();
+}
+}}
+  style={{
+    width: `${100 / (players.length + 2)}vw`,
+    maxWidth: "100%",
+    boxSizing: "border-box"
+  }}
+/>
+
                 </td>
               ))}
             </tr>
@@ -89,6 +103,8 @@ export default function App() {
           </tr>
         </tbody>
       </table>
+     </div>
+
     </div>
   );
 }
