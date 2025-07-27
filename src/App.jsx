@@ -22,12 +22,13 @@ function AddPlayerForm({ onAdd }) {
         onChange={(e) => setName(e.target.value)}
         required
       />
-      <button type="submit">Add Player</button>
+      <button type="submit" className="btn btn-xl btn-primary">Add Player</button>
     </form>
   );
 }
 
 export default function App() {
+  const roundName = [ "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
   const [players, setPlayers] = useState([]);
   const [scores, setScores] = useState({});
 
@@ -69,13 +70,13 @@ export default function App() {
         <tbody>
           {Array.from({ length: 11 }, (_, roundIndex) => (
             <tr key={roundIndex}>
-              <td>Round {roundIndex + 1}</td>
+              <td>Round {roundName[roundIndex]}</td>
               {players.map(player => (
                 <td key={player}>
 <input
   type="number"
-  value={scores[player]?.[roundIndex] || 0}
-  onChange={(e) => updateScore(player, roundIndex, e.target.value)}
+  className="input input-accent input-lg"
+  onBlur={(e) => updateScore(player, roundIndex, e.target.value)}
   style={{
     width: `${100 / (players.length + 2)}vw`,
     maxWidth: "100%",
