@@ -77,6 +77,11 @@ export default function App() {
   type="number"
   className="input input-accent input-lg"
   onBlur={(e) => updateScore(player, roundIndex, e.target.value)}
+  onKeyDown ={(e)=> {
+if(e.key === "Enter"){
+e.target.blur();
+}
+}}
   style={{
     width: `${100 / (players.length + 2)}vw`,
     maxWidth: "100%",
