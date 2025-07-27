@@ -52,7 +52,8 @@ export default function App() {
     <div>
       <h1>Score Tracker</h1>
       <AddPlayerForm onAdd={addPlayer} />
-      <table>
+      <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+      <table className="table">
         <thead>
           <tr>
             <th>Round</th>
@@ -70,11 +71,17 @@ export default function App() {
               <td>Round {roundIndex + 1}</td>
               {players.map(player => (
                 <td key={player}>
-                  <input
-                    type="number"
-                    value={scores[player]?.[roundIndex] || 0}
-                    onChange={(e) => updateScore(player, roundIndex, e.target.value)}
-                  />
+<input
+  type="number"
+  value={scores[player]?.[roundIndex] || 0}
+  onChange={(e) => updateScore(player, roundIndex, e.target.value)}
+  style={{
+    width: `${100 / (players.length + 1)}vw`,
+    maxWidth: "100%",
+    boxSizing: "border-box"
+  }}
+/>
+
                 </td>
               ))}
             </tr>
@@ -89,6 +96,8 @@ export default function App() {
           </tr>
         </tbody>
       </table>
+     </div>
+
     </div>
   );
 }
