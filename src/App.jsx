@@ -15,6 +15,7 @@ function AddPlayerForm({ onAdd }) {
   return (
     <form onSubmit={handleSubmit} style={{ marginBottom: "1em" }}>
       <input
+	className="input"
         type="text"
         placeholder="Enter player name"
         value={name}
@@ -50,7 +51,7 @@ export default function App() {
 
   return (
     <div>
-      <h1>Score Tracker</h1>
+      <h1>5 👑</h1>
       <AddPlayerForm onAdd={addPlayer} />
       <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
       <table className="table">
@@ -76,7 +77,7 @@ export default function App() {
   value={scores[player]?.[roundIndex] || 0}
   onChange={(e) => updateScore(player, roundIndex, e.target.value)}
   style={{
-    width: `${100 / (players.length + 1)}vw`,
+    width: `${100 / (players.length + 2)}vw`,
     maxWidth: "100%",
     boxSizing: "border-box"
   }}
