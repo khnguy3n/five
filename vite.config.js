@@ -5,16 +5,16 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 // https://vite.dev/config/
 export default defineConfig({
-	plugins: [react(), tailwindcss(), tsconfigPaths()],
-	base: "/five/",
-	resolve: {
-		alias: {
-			"@components": "/src/components",
-		},
-	},
-	server: {
-		open: true,
-		host: "0.0.0.0",
-		port: 8080,
-	},
+  plugins: [react(), tailwindcss(), tsconfigPaths()],
+  base: "/five/",
+  resolve: {
+    alias: {
+      "@components": "/src/components",
+    },
+  },
+  server: {
+    open: true,
+    host: "0.0.0.0",
+    port: 8080,
+  },
 });
