@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import "./App.css";
+import { useState } from "react"
+import "./App.css"
 
 function AddPlayerForm({ onAdd }) {
-  const [name, setName] = useState("");
+  const [name, setName] = useState("")
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (name.trim()) {
-      onAdd(name.trim());
-      setName("");
+      onAdd(name.trim())
+      setName("")
     }
-  };
+  }
 
   return (
     <form onSubmit={handleSubmit} style={{ marginBottom: "1em" }}>
@@ -26,31 +26,31 @@ function AddPlayerForm({ onAdd }) {
         Add Player
       </button>
     </form>
-  );
+  )
 }
 
 export default function App() {
-  const roundName = ["3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
-  const [players, setPlayers] = useState([]);
-  const [scores, setScores] = useState({});
+  const roundName = ["3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+  const [players, setPlayers] = useState([])
+  const [scores, setScores] = useState({})
 
   const addPlayer = (name) => {
-    setPlayers([...players, name]);
-    setScores({ ...scores, [name]: Array(11).fill(0) });
-  };
+    setPlayers([...players, name])
+    setScores({ ...scores, [name]: Array(11).fill(0) })
+  }
 
   const removePlayer = (name) => {
-    const updatedPlayers = players.filter((p) => p !== name);
-    const { [name]: _, ...updatedScores } = scores;
-    setPlayers(updatedPlayers);
-    setScores(updatedScores);
-  };
+    const updatedPlayers = players.filter((p) => p !== name)
+    const { [name]: _, ...updatedScores } = scores
+    setPlayers(updatedPlayers)
+    setScores(updatedScores)
+  }
 
   const updateScore = (player, round, value) => {
-    const updated = [...scores[player]];
-    updated[round] = Number(value);
-    setScores({ ...scores, [player]: updated });
-  };
+    const updated = [...scores[player]]
+    updated[round] = Number(value)
+    setScores({ ...scores, [player]: updated })
+  }
 
   return (
     <div>
@@ -64,6 +64,7 @@ export default function App() {
               {players.map((player) => (
                 <th key={player}>
                   <button
+                    type="button"
                     onClick={() => removePlayer(player)}
                     className="btn btn-outline btn-error btn-block"
                   >
@@ -88,7 +89,7 @@ export default function App() {
                       }
                       onKeyDown={(e) => {
                         if (e.key === "Enter") {
-                          e.target.blur();
+                          e.target.blur()
                         }
                       }}
                       style={{
@@ -115,5 +116,5 @@ export default function App() {
         </table>
       </div>
     </div>
-  );
+  )
 }
