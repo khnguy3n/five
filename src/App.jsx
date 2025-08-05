@@ -30,21 +30,14 @@ export default function App() {
       <h1>5 👑</h1>
       <AddPlayerForm onAdd={addPlayer} />
       <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
-        <table className="table">
-          <thead>
+        <table className="table sticky top-0">
+          <thead className="sticky top-0 bg-base-100 z-[1]">
             <tr>
-              <th>Round</th>
+              <th className="bg-base-100">Rounds</th>
               {players.map((player) => (
-                <th key={player}>
-                  <button
-                    type="button"
-                    onClick={() => removePlayer(player)}
-                    className="btn btn-outline btn-error btn-block"
-                  >
-                    ❌
-                  </button>
+                <td key={player}>
                   <div className="text-center">{player}</div>
-                </th>
+                </td>
               ))}
             </tr>
           </thead>
@@ -80,12 +73,29 @@ export default function App() {
                 <strong>Total</strong>
               </td>
               {players.map((player) => (
-                <td key={player}>
+                <td key={player} className="text-center">
                   <strong>{scores[player]?.reduce((a, b) => a + b, 0)}</strong>
                 </td>
               ))}
             </tr>
           </tbody>
+          <tfoot>
+            <tr>
+              <th>Round</th>
+              {players.map((player) => (
+                <th key={player}>
+                  <button
+                    type="button"
+                    onClick={() => removePlayer(player)}
+                    className="btn btn-outline btn-error btn-block"
+                  >
+                    ❌
+                  </button>
+                  <div className="text-center">{player}</div>
+                </th>
+              ))}
+            </tr>
+          </tfoot>
         </table>
       </div>
     </div>
