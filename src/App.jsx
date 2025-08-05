@@ -1,33 +1,6 @@
 import { useState } from "react"
 import "./App.css"
-
-function AddPlayerForm({ onAdd }) {
-  const [name, setName] = useState("")
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (name.trim()) {
-      onAdd(name.trim())
-      setName("")
-    }
-  }
-
-  return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: "1em" }}>
-      <input
-        className="input"
-        type="text"
-        placeholder="Enter player name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        required
-      />
-      <button type="submit" className="btn btn-xl btn-primary">
-        Add Player
-      </button>
-    </form>
-  )
-}
+import AddPlayerForm from "components/AddPlayerForm"
 
 export default function App() {
   const roundName = ["3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
