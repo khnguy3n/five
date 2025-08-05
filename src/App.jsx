@@ -1,6 +1,6 @@
 import { useState } from "react"
 import "./App.css"
-import AddPlayerForm from "components/AddPlayerForm"
+import AddPlayerForm from "@components/AddPlayerForm"
 
 export default function App() {
   const roundName = ["3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
